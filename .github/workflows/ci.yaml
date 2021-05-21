@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: '14.x'
       - run: |
-
+          cd client
           npm ci
           npm run test
 
