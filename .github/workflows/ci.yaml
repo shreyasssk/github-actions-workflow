@@ -39,6 +39,12 @@ jobs:
           name: dist
           path: ./client/dist
 
+      - name: ZIP Assets
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          cd client
+          zip -r build.zip ./dist/client
+
       - name: Create a Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx semantic-release
