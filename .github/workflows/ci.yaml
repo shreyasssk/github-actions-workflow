@@ -31,11 +31,13 @@ jobs:
       - name: Build Project
         if: github.event_name == 'push'
         run: cd client && npm run build:dev
+
       - name: Upload Build Artifacts
+        if: github.event_name == 'push'
         uses: actions/upload-artifact@v2
         with:
           name: dist
-          path: ./dist
+          path: ./client/dist
 
       - name: Deploy to Staging
         if: github.event_name == 'push'
