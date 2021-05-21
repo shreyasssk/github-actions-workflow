@@ -27,12 +27,11 @@ jobs:
         with:
           node-version: '14.x'
       - run: |
-          cd client
+
           npm ci
           npm run test
 
       - name: Build Dev Project
-        if: github.ref == 'refs/heads/staging'
         run: npm run build:dev
 
       - name: Build Prod Project
