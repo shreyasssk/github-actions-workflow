@@ -9,8 +9,10 @@ jobs:
     steps:
       - name: Open Issue
         if: failure() && github.event_name == 'pull_request'
-        run: |
-          curl -X POST -H 'content-type: application/json'
-           -- data '{"text":"New issue created ${{ github.event.release.tag_name }} 
-           is out, <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.>"}' 
-           ${{ secrets.SLACK_WEBHOOK }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: github-bot
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_TITLE: 'New Issue Created! :no_entry:'
+          SLACK_MESSAGE: 'New Issue created! <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.> '
