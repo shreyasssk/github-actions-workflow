@@ -12,7 +12,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: github-bot
           SLACK_COLOR: ${{ job.status }}
           SLACK_TITLE: 'New Issue Created! :no_entry:'
           SLACK_MESSAGE: 'New Issue created! <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.> '
+          MSG_MINIMAL: event,commit

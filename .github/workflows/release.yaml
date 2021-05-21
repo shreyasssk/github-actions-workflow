@@ -11,6 +11,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: github-bot
           SLACK_COLOR: ${{ job.status }}
           SLACK_TITLE: 'New Release Created! :package: :tada: :confetti_ball:'
+          SLACK_MESSAGE: '<${{ github.event.release.html_url }}|check it out now.>'
+          MSG_MINIMAL: event,commit
