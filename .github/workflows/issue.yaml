@@ -7,11 +7,9 @@ jobs:
   issue-message:
     runs-on: ubuntu-latest
     steps:
-      - name: Open Issue
+      - name: Slack Open Issue
         uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_TITLE: 'New Issue Created! :no_entry:'
-          SLACK_MESSAGE: 'New Issue created! <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.> '
-          MSG_MINIMAL: event,commit
+        run: |
+          curl -X POST -H 'Content-type: application/json'
+           -- data '{"text":"New issue created: <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.>"}' 
+           ${{ secrets.SLACK_WEBHOOK }}
