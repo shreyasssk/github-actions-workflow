@@ -8,7 +8,12 @@
   </nav>
   <div class="hero">
     <h1 class="hero__title">Shreyas Shivakumar</h1>
-    <p class="hero__description">Welcome to Production Environment</p>
+    <div *ngIf="isProd; else isStage">
+      <p class="hero__description">Welcome to <strong>PRODUCTION</strong> Environment</p>
+    </div>
+    <ng-template #isStage>
+      <p class="hero__description">Welcome to <strong>STAGING</strong> Environment</p>
+    </ng-template>
   </div>
   <div class="hero__terminal">
     <pre>
