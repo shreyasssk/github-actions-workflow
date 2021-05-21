@@ -12,6 +12,6 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
-          SLACK_TITLE: 'New Release Created! :package: :tada: :confetti_ball:'
-          SLACK_MESSAGE: '<${{ github.event.release.html_url }}|check it out now.>'
+          SLACK_TITLE: 'New Release Created! :rocket: :package:'
+          SLACK_MESSAGE: '<${{ github.event.release.html_url }}|check it out now. :tada: :confetti_ball:>'
           MSG_MINIMAL: event,commit

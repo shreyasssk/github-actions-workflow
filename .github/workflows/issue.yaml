@@ -12,6 +12,6 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
-          SLACK_TITLE: 'New Issue Created! :no_entry:'
-          SLACK_MESSAGE: 'Check it here -> <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.> '
+          SLACK_TITLE: 'New Issue Created:bangbang: :no_entry:'
+          SLACK_MESSAGE: 'Check it here :warning: -> <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.> '
           MSG_MINIMAL: event,commit
