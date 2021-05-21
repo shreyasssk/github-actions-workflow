@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Open Issue
-        if: failure() && github.event_name == 'pull_request'
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
