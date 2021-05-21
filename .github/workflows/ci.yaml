@@ -16,7 +16,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-key: |
+          restore-keys: |
             ${{ runner.os }}-node-
 
       - name: Testing
@@ -31,6 +31,14 @@ jobs:
       - name: Build Project
         if: github.event_name == 'push'
         run: cd client && npm run build:dev
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifacts@v1
+        if: github.event_name == 'push'
+        run: cd client
+        with:
+          name: dist
+          path: ./dist
 
       - name: Deploy to Staging
         if: github.event_name == 'push'
