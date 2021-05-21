@@ -1,0 +1,16 @@
+name: Notify on Release
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  issue-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open Issue
+        if: failure() && github.event_name == 'pull_request'
+        run: |
+          curl -X POST -H 'content-type: application/json'
+           -- data '{"text":"New issue created ${{ github.event.release.tag_name }} 
+           is out, <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.>"}' 
+           ${{ secrets.SLACK_WEBHOOK }}
