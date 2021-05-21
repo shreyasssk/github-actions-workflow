@@ -32,7 +32,9 @@ jobs:
           npm run test
 
       - name: Build Dev Project
-        run: npm run build:dev
+        run: |
+          cd client
+          npm run build:dev
 
       - name: Build Prod Project
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
