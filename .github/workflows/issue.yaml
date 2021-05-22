@@ -13,7 +13,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACK_TITLE: 'New Issue Created:bangbang: :no_entry:'
-          SLACK_MESSAGE: 'Check it here :warning: -> <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.> '
+          SLACK_MESSAGE: 'Check it here :no_entry_sign: -> <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.> '
           MSG_MINIMAL: event,commit
 
       - name: Discord Open Issue
@@ -22,5 +22,5 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: Failure
           title: 'New Issue Created:bangbang: :no_entry:'
-          description: 'Check it [here]( ${{ github.event.issue.html_url }} ). :warning:'
+          description: 'Check it [here]( ${{ github.event.issue.html_url }} ). :no_entry_sign:'
           color: FF0000

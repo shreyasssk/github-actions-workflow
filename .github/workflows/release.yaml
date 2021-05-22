@@ -23,4 +23,4 @@ jobs:
           title: 'New Release Created! :rocket: :package:'
           description: |
             Version: `${{ github.event.release.tag_name }}`
-            Check it [here]( ${{ github.event.release.html_url }} ) :warning:
+            Check it [here]( ${{ github.event.release.html_url }} ) :tada: :confetti_ball:
