@@ -15,3 +15,10 @@ jobs:
           SLACK_TITLE: 'New Issue Created:bangbang: :no_entry:'
           SLACK_MESSAGE: 'Check it here :warning: -> <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.> '
           MSG_MINIMAL: event,commit
+
+      - name: Discord Open Issue
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: 'New Issue Created:bangbang: :no_entry:'
+          description: 'Check it [here](${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.) :warning:'
