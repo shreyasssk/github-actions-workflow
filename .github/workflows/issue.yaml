@@ -20,5 +20,7 @@ jobs:
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: Failure
           title: 'New Issue Created:bangbang: :no_entry:'
-          description: 'Check it [here](${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.) :warning:'
+          description: 'Check it [here]( ${{ github.event.issue.html_url }} ). :warning:'
+          color: FF0000

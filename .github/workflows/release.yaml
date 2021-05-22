@@ -13,5 +13,14 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACK_TITLE: 'New Release Created! :rocket: :package:'
-          SLACK_MESSAGE: '<${{ github.event.release.html_url }}|check it out now. :tada: :confetti_ball:>'
+          SLACK_MESSAGE: '<${{ github.event.release.html_url }}|check it out now.> :tada: :confetti_ball:'
           MSG_MINIMAL: event,commit
+
+      - name: Discord Release Created
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: 'New Release Created! :rocket: :package:'
+          description: |
+            Version: `${{ github.event.release.tag_name }}`
+            Check it [here]( ${{ github.event.release.html_url }} ) :warning:
