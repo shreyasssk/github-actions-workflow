@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   isProd = environment.production;
+  discordLink = environment.discordLink;
 
   ngOnInit() {
     this.loadJsFile('assets/js/scribbler.js');
